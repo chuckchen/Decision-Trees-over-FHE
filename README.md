@@ -12,11 +12,13 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt install build-essential cmake g++
 ```
-2. Install and build SEAL library (version 4.0.0)
+
+2. Install and build SEAL library (version 4.1.2)
+
 ```
-git --branch 4.0.0 https://github.com/Microsoft/SEAL.git
-cd SEAL
-cmake -S . -B build
+git clone https://github.com/Microsoft/SEAL.git vendor/SEAL
+cd vendor/SEAL
+cmake -S . -B build -DCMAKE_INSTALL_PREFIX=$(pwd)/.. -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 sudo cmake --install build
 ```
@@ -25,8 +27,8 @@ Make sure that the SEAL installation path matches a path listed in CMakeLists.tx
 ### Building
 To build the project, run the following commands:
 ```
-cd fhe_random_forest
-cmake -S . -B build
+cd Decision-Trees-over-FHE
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
 This command will create a 'build' subdirectory and store the executables in it. 
@@ -36,7 +38,7 @@ This command will create a 'build' subdirectory and store the executables in it.
 After each change to the code, make sure the tests still run successfully:
 ```
 cd build
-ctest -C
+ctest -C Release
 ```
 
 ### Running

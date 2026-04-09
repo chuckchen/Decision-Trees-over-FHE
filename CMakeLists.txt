@@ -12,8 +12,8 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-find_package(SEAL 4.0.0 REQUIRED
-        PATHS /$ENV{HOME}/SEAL/native/${CMAKE_BUILD_TYPE} /$ENV{HOME}/SEAL/build/cmake)
+find_package(SEAL 4.1.0 REQUIRED
+        PATHS vendor /$ENV{HOME}/SEAL/native/${CMAKE_BUILD_TYPE} /$ENV{HOME}/SEAL/build/cmake)
 
 add_executable(fhe_tests
         tests/fhe_tests.cpp
